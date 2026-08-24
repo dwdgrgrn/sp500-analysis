@@ -21,15 +21,17 @@ num_of_simulations = 10000
 
 future_close_values = np.empty((num_of_simulations, days_into_future))
 
+random_returns = np.random.normal(mean, std, size=(num_of_simulations, days_into_future))
+
 for i in range(num_of_simulations):
     latest_close = current_close
     for j in range(days_into_future):
-        future_close_values[i, j] = latest_close * np.exp(np.random.normal(mean, std))
+        future_close_values[i, j] = latest_close * np.exp(random_returns[i][j])
         latest_close = future_close_values[i, j]
 
 final_close_values = np.sort(future_close_values[:, -1])
 
-confidence_level = 0.95
+confidence_level = 0.995
 percentile = 1 - confidence_level
 
 percentile_index = int(percentile * num_of_simulations)
