@@ -1,5 +1,5 @@
 # sp500-analysis
-A Monte Carlo simulation estimating the probability of the S&P 500 falling below a given price over a chosen time period.
+A Monte Carlo simulation estimating the S&P 500 price falling below a calculated value at a specific confidence level over a chosen time period.
 
 ## Libraries used
 - yfinance
