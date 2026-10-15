@@ -16,7 +16,7 @@ std = np.sqrt(var)
 
 
 current_close = close_values[-1]
-days_into_future = 365*5
+days_into_future = 252
 num_of_simulations = 10000
 
 future_close_values = np.empty((num_of_simulations, days_into_future))
