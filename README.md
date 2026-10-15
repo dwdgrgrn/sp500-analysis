@@ -32,3 +32,16 @@ A Monte Carlo simulation estimating the S&P 500 price falling below a calculated
 ## Limitations
 - The simulation ran assumes that the close price difference after each day is a normal distribution, which is unlikely to be the case.
 - The simulation doesn't take into account any factors that could affect it in the future and is purely based on the average of historical prices.
+
+## Backtest
+- The model was test on 20 years of S&P 500 close values (2006 - 2026). For each day, a 1 day VaR was calculated using only the previous 5 years of returns. Then it is compared to the next day close. A breach is a day where the close value fell below the predicted level.
+
+| Confidence | Expected | Monte Carlo | Historical |
+| --- | --- | --- | --- |
+| 95% | 5.00% | 3.82% | 4.27% |
+| 99.5% | 0.50% | 1.46% | 0.56% |
+
+- At 95%, the normal is too cautious, with fewer breaches than expected.
+- At 99.5%, it underestimates the risk, with nearly three times as many breaches as expected.
+- Historical VaR stays close to the expected rate at both levels.
+- Real returns have fatter tails than a normal distribution, so the model overstates moderate losses and underestimates extreme ones.
